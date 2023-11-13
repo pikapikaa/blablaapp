@@ -7,7 +7,7 @@ import {store} from './src/services/store/store';
 function App(): JSX.Element {
   return (
     <Provider store={store}>
-      <SafeAreaView>
+      <SafeAreaView style={{flex: 1}}>
         <View style={{flex: 1}}>
           <Text>blabla</Text>
         </View>
