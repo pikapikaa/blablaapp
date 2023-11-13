@@ -1,18 +1,13 @@
-import * as React from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import React from 'react';
+import {View, StyleSheet} from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 interface ProductCardButtonProps {}
 
 const ProductCardButton = (props: ProductCardButtonProps) => {
   return (
     <View style={styles.container}>
-      <View
-        style={{
-          width: 20,
-          height: 20,
-          borderRadius: 20 / 2,
-          backgroundColor: 'blue',
-        }}></View>
+      <Icon name="add-circle-sharp" size={25} color="#4E67BF" />
     </View>
   );
 };
