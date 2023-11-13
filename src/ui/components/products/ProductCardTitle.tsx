@@ -21,11 +21,11 @@ const styles = StyleSheet.create({
   container: {flex: 1, gap: 3},
   title: {
     fontSize: 14,
-    fontWeight: 'bold',
+    fontFamily: 'RobotoSlab-Bold',
     color: '#00008B',
   },
   subtitle: {
     fontSize: 14,
-    fontWeight: 'bold',
+    fontFamily: 'RobotoSlab-Bold',
   },
 });

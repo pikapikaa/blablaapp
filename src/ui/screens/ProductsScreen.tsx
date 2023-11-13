@@ -10,6 +10,7 @@ import {
 } from '../../services/store/reducers/products';
 import KeyboardAvoidingComponent from '../components/common/KeyboardAvoidingComponent';
 import ProductList from '../components/products/ProductList';
+import TitleView from '../components/products/TitleView';
 
 const limit = 100;
 
@@ -50,10 +51,7 @@ const ProductsScreen = () => {
   return (
     <KeyboardAvoidingComponent>
       <View style={styles.container}>
-        <Text
-          style={{color: 'black', fontSize: 30, fontFamily: 'RobotoSlab-Bold'}}>
-          All Users
-        </Text>
+        <TitleView>All Products</TitleView>
         {content}
       </View>
     </KeyboardAvoidingComponent>
@@ -65,9 +63,9 @@ export default ProductsScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 15,
+    padding: 20,
     paddingBottom: 0,
-    gap: 20,
+    gap: 10,
   },
   center: {flex: 1, justifyContent: 'center', alignItems: 'center'},
 });

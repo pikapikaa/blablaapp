@@ -63,7 +63,7 @@ const ProductList = () => {
 
 const style = StyleSheet.create({
   row: {
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
   },
 });
 
