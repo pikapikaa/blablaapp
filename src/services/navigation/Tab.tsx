@@ -3,6 +3,7 @@ import * as React from 'react';
 import {Text, View, StyleSheet} from 'react-native';
 import ProductsScreen from '../../ui/screens/ProductsScreen';
 import ProfileScreen from '../../ui/screens/ProfileScreen';
+import {ProductsStack, ProfileStack} from './Stack';
 
 const Tab = createBottomTabNavigator();
 
@@ -15,13 +16,13 @@ const TabNavigation = () => {
       })}>
       <Tab.Screen
         name="products"
-        component={ProductsScreen}
-        options={{title: 'Main'}}
+        component={ProductsStack}
+        options={{headerShown: false}}
       />
       <Tab.Screen
         name="profile"
-        component={ProfileScreen}
-        options={{title: 'Profile'}}
+        component={ProfileStack}
+        options={{headerShown: false}}
       />
     </Tab.Navigator>
   );
