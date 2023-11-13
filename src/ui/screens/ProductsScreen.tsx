@@ -50,7 +50,8 @@ const ProductsScreen = () => {
   return (
     <KeyboardAvoidingComponent>
       <View style={styles.container}>
-        <Text style={{color: 'black', fontSize: 30, fontWeight: 'bold'}}>
+        <Text
+          style={{color: 'black', fontSize: 30, fontFamily: 'RobotoSlab-Bold'}}>
           All Users
         </Text>
         {content}
