@@ -1,10 +1,8 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import * as React from 'react';
-import {Text, View, StyleSheet, Platform} from 'react-native';
+import React from 'react';
+import {StyleSheet, Platform} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-import ProductsScreen from '../../ui/screens/ProductsScreen';
-import ProfileScreen from '../../ui/screens/ProfileScreen';
 import {ProductsStack, ProfileStack} from './Stack';
 
 const Tab = createBottomTabNavigator();
