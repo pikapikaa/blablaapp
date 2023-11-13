@@ -10,7 +10,7 @@ const ProductCardTitle = () => {
       <Text numberOfLines={1} style={[styles.title]}>
         {product.title}
       </Text>
-      <Text style={[styles.subtitle]}>₽ {product.price}</Text>
+      <Text style={[styles.subtitle]}>{product.price} руб</Text>
     </View>
   );
 };
@@ -27,5 +27,6 @@ const styles = StyleSheet.create({
   subtitle: {
     fontSize: 14,
     fontFamily: 'RobotoSlab-Bold',
+    color: 'black',
   },
 });
