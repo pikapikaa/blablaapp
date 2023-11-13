@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {StyleSheet, Image} from 'react-native';
 import {useProductContext} from '../../../services/contexts/ProductCardContext';
+import {ITEM_HEIGHT} from '../../../lib/constants';
 
-const ITEM_HEIGHT = 100;
 interface UserCardImageProps {}
 
 const ProductCardImage = (props: UserCardImageProps) => {
@@ -14,7 +14,8 @@ export default ProductCardImage;
 
 const styles = StyleSheet.create({
   image: {
-    width: ITEM_HEIGHT - 10,
-    height: ITEM_HEIGHT - 10,
+    width: '100%',
+    height: '70%',
+    borderRadius: 10,
   },
 });

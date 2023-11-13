@@ -1,21 +1,16 @@
-import * as React from 'react';
+import React from 'react';
 import {Text, View, StyleSheet} from 'react-native';
-import {useSelector} from 'react-redux';
 import {useProductContext} from '../../../services/contexts/ProductCardContext';
 
-interface UserCardTitleProps {}
-
-const ProductCardTitle = (props: UserCardTitleProps) => {
+const ProductCardTitle = () => {
   const {product} = useProductContext();
 
   return (
     <View style={styles.container}>
-      <Text style={[styles.title]}>
-        {product.title} {product.brand}
+      <Text numberOfLines={1} style={[styles.title]}>
+        {product.title}
       </Text>
-      <Text numberOfLines={2} style={[styles.subtitle]}>
-        {product.price}
-      </Text>
+      <Text style={[styles.subtitle]}>₽ {product.price}</Text>
     </View>
   );
 };
@@ -23,11 +18,14 @@ const ProductCardTitle = (props: UserCardTitleProps) => {
 export default ProductCardTitle;
 
 const styles = StyleSheet.create({
-  container: {flex: 1, paddingEnd: 5},
+  container: {flex: 1, gap: 3},
   title: {
-    fontSize: 18,
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: '#00008B',
   },
   subtitle: {
     fontSize: 14,
+    fontWeight: 'bold',
   },
 });

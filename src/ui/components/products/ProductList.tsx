@@ -1,8 +1,7 @@
-import React, {useCallback, useState} from 'react';
-import {View, FlatList} from 'react-native';
+import React, {useCallback} from 'react';
+import {View, FlatList, StyleSheet} from 'react-native';
 
 import {useAppDispatch} from '../../../services/hooks';
-import {useNavigation} from '@react-navigation/native';
 import {
   selectProducts,
   selectStatus,
@@ -13,8 +12,8 @@ import {Product} from '../../../domain/Product';
 import ProductCard from './ProductCard';
 import ProductCardTitle from './ProductCardTitle';
 import ProductCardImage from './ProductCardImage';
+import {ITEM_HEIGHT} from '../../../lib/constants';
 
-const ITEM_HEIGHT = 100;
 const limit = 100;
 
 const ProductList = () => {
@@ -44,6 +43,8 @@ const ProductList = () => {
   return (
     <FlatList
       data={data}
+      numColumns={2}
+      columnWrapperStyle={style.row}
       renderItem={renderItem}
       keyExtractor={item => `${item.id}`}
       ItemSeparatorComponent={() => <View style={{height: 20}}></View>}
@@ -57,5 +58,11 @@ const ProductList = () => {
     />
   );
 };
+
+const style = StyleSheet.create({
+  row: {
+    justifyContent: 'space-around',
+  },
+});
 
 export default ProductList;
