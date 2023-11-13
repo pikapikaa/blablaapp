@@ -13,6 +13,7 @@ import ProductCard from './ProductCard';
 import ProductCardTitle from './ProductCardTitle';
 import ProductCardImage from './ProductCardImage';
 import {ITEM_HEIGHT} from '../../../lib/constants';
+import ProductCardButton from './ProductCardButton';
 
 const limit = 100;
 
@@ -30,6 +31,7 @@ const ProductList = () => {
           onPress={() => {}}
           image={<ProductCardImage />}
           title={<ProductCardTitle />}
+          button={<ProductCardButton />}
         />
       );
     },

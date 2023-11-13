@@ -11,20 +11,24 @@ interface ProductCardProps {
   onPress: (product: Product) => void;
   image: ReactNode;
   title: ReactNode;
+  button: ReactNode;
 }
 
-const ProductCard = memo(({item, onPress, image, title}: ProductCardProps) => {
-  return (
-    <ProductCardContext.Provider value={{product: item}}>
-      <Pressable onPress={() => onPress(item)}>
-        <View style={[styles.container]}>
-          {image}
-          {title}
-        </View>
-      </Pressable>
-    </ProductCardContext.Provider>
-  );
-});
+const ProductCard = memo(
+  ({item, onPress, image, title, button}: ProductCardProps) => {
+    return (
+      <ProductCardContext.Provider value={{product: item}}>
+        <Pressable onPress={() => onPress(item)}>
+          <View style={[styles.container]}>
+            {image}
+            {title}
+            {button}
+          </View>
+        </Pressable>
+      </ProductCardContext.Provider>
+    );
+  },
+);
 
 export default ProductCard;
 
@@ -34,8 +38,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: 'white',
     width: width / 2 - 30,
-    paddingHorizontal: 18,
-    paddingTop: 18,
+    padding: 18,
     gap: 10,
   },
 });
