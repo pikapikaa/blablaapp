@@ -3,15 +3,12 @@ import {SafeAreaView, Text, View} from 'react-native';
 import {Provider} from 'react-redux';
 
 import {store} from './src/services/store/store';
+import Navigation from './src/services/navigation/Navigation';
 
 function App(): JSX.Element {
   return (
     <Provider store={store}>
-      <SafeAreaView style={{flex: 1}}>
-        <View style={{flex: 1}}>
-          <Text>blabla</Text>
-        </View>
-      </SafeAreaView>
+      <Navigation />
     </Provider>
   );
 }
