@@ -40,9 +40,6 @@ const ProductsScreen = () => {
     }
   }, [status, dispatch]);
 
-  const [count, setCount] = useState(0);
-  console.log(count);
-
   useEffect(() => {
     navigation.setOptions({
       headerRight: () => (

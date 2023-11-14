@@ -1,9 +1,13 @@
-import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
+import {PayloadAction, createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 
 import {Product} from '../../../domain/Product';
 import {client} from '../api';
 import {RootState} from '../store';
 const URL = `https://dummyjson.com/products`;
+
+type ProductPayload = {
+  products: Product[];
+};
 
 export interface ProductsState {
   products: Product[];
@@ -35,10 +39,16 @@ export const productsSlice = createSlice({
       .addCase(fetchProducts.pending, state => {
         state.status = 'loading';
       })
-      .addCase(fetchProducts.fulfilled, (state, action) => {
-        state.status = 'succeeded';
-        state.products = action.payload.products;
-      })
+      .addCase(
+        fetchProducts.fulfilled,
+        (state, action: PayloadAction<ProductPayload>) => {
+          state.status = 'succeeded';
+          state.products = action.payload.products;
+          state.products.forEach(element => {
+            element.count = 0;
+          });
+        },
+      )
       .addCase(fetchProducts.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.error.message;
