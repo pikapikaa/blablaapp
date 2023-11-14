@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, StyleSheet, Text, Pressable, Dimensions} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {useNavigation} from '@react-navigation/native';
 
 import TitleView from '../components/products/TitleView';
 import {useSelector} from 'react-redux';
@@ -13,6 +14,7 @@ const {width} = Dimensions.get('window');
 
 const CartScreen = () => {
   const products = useSelector(selectCartProducts);
+  const navigation = useNavigation();
   const dispatch = useAppDispatch();
 
   let content;
@@ -28,7 +30,12 @@ const CartScreen = () => {
     );
     button = (
       <View style={styles.button}>
-        <CustomButton title="Buy" onPress={() => {}} />
+        <CustomButton
+          title="Buy"
+          onPress={() => {
+            navigation.navigate('Payment');
+          }}
+        />
       </View>
     );
   } else {
