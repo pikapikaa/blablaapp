@@ -10,7 +10,7 @@ const ProductCardTitle = () => {
       <Text numberOfLines={1} style={[styles.title]}>
         {product.title}
       </Text>
-      <Text style={[styles.subtitle]}>{product.price} руб</Text>
+      <Text style={[styles.subtitle]}>${product.price}</Text>
     </View>
   );
 };
@@ -21,12 +21,12 @@ const styles = StyleSheet.create({
   container: {flex: 1, gap: 3},
   title: {
     fontSize: 14,
-    fontFamily: 'RobotoSlab-Bold',
-    color: '#00008B',
+    fontFamily: 'RobotoSlab-Regular',
+    color: '#01282b',
   },
   subtitle: {
-    fontSize: 14,
+    fontSize: 18,
     fontFamily: 'RobotoSlab-Bold',
-    color: 'black',
+    color: '#01282b',
   },
 });

@@ -14,5 +14,5 @@ const ProductDetailScreen = (props: ProductDetailScreenProps) => {
 export default ProductDetailScreen;
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {flex: 1, backgroundColor: '#f4f6f5'},
 });

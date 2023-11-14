@@ -63,9 +63,11 @@ export default ProductsScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
+    paddingHorizontal: 20,
+    paddingTop: 15,
     paddingBottom: 0,
     gap: 10,
+    backgroundColor: '#f4f6f5',
   },
   center: {flex: 1, justifyContent: 'center', alignItems: 'center'},
 });

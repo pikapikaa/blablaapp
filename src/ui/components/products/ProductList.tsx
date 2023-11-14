@@ -14,10 +14,12 @@ import ProductCardTitle from './ProductCardTitle';
 import ProductCardImage from './ProductCardImage';
 import {ITEM_HEIGHT} from '../../../lib/constants';
 import ProductCardButton from './ProductCardButton';
+import {useNavigation} from '@react-navigation/native';
 
 const limit = 100;
 
 const ProductList = () => {
+  const navigation = useNavigation();
   const dispatch = useAppDispatch();
 
   const data = useSelector(selectProducts);
@@ -28,7 +30,7 @@ const ProductList = () => {
       return (
         <ProductCard
           item={item}
-          onPress={() => {}}
+          onPress={navigateToDetail}
           image={<ProductCardImage />}
           title={<ProductCardTitle />}
           button={<ProductCardButton />}
@@ -37,6 +39,10 @@ const ProductList = () => {
     },
     [data],
   );
+
+  function navigateToDetail() {
+    navigation.navigate('ProductDetail');
+  }
 
   const onPullToRefresh = () => {
     dispatch(fetchProducts(`?skip=0&limit=${limit}`));

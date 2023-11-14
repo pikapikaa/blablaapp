@@ -7,7 +7,7 @@ interface ProductCardButtonProps {}
 const ProductCardButton = (props: ProductCardButtonProps) => {
   return (
     <View style={styles.container}>
-      <Icon name="add-circle-sharp" size={25} color="#4E67BF" />
+      <Icon name="add-circle-sharp" size={25} color="#bcea70" />
     </View>
   );
 };

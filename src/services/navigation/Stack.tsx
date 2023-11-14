@@ -34,6 +34,7 @@ function ProductsStack() {
         options={{
           title: '',
           headerShadowVisible: false,
+          headerStyle: {backgroundColor: '#f4f6f5'},
         }}
       />
     </Stack.Navigator>

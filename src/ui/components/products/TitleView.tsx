@@ -15,6 +15,6 @@ const styles = StyleSheet.create({
   container: {
     fontSize: 35,
     fontFamily: 'RobotoSlab-Bold',
-    color: 'black',
+    color: '#01282b',
   },
 });
