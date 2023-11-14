@@ -1,5 +1,4 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import Icon from 'react-native-vector-icons/Ionicons';
 
 import ProfileScreen from '../../ui/screens/ProfileScreen';
 import CartScreen from '../../ui/screens/CartScreen';
