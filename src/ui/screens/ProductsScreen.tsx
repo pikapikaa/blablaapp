@@ -1,13 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import {
-  Text,
-  View,
-  StyleSheet,
-  ActivityIndicator,
-  Pressable,
-} from 'react-native';
+import {Text, View, StyleSheet, ActivityIndicator} from 'react-native';
 import {useSelector} from 'react-redux';
-import Icon from 'react-native-vector-icons/Ionicons';
 
 import {useAppDispatch} from '../../services/hooks';
 import {
@@ -19,6 +12,7 @@ import KeyboardAvoidingComponent from '../components/common/KeyboardAvoidingComp
 import ProductList from '../components/products/ProductList';
 import TitleView from '../components/products/TitleView';
 import {useNavigation} from '@react-navigation/native';
+import CartIcon from '../components/cart/CartIcon';
 
 const limit = 100;
 
@@ -42,11 +36,7 @@ const ProductsScreen = () => {
 
   useEffect(() => {
     navigation.setOptions({
-      headerRight: () => (
-        <Pressable onPress={() => navigation.navigate('Cart')}>
-          <Icon name="cart" size={25} color="#01282b" />
-        </Pressable>
-      ),
+      headerRight: () => <CartIcon />,
     });
   }, [navigation]);
 
