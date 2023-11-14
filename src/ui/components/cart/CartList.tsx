@@ -37,6 +37,7 @@ const CartList = () => {
         offset: (ITEM_HEIGHT + 20) * index,
         index,
       })}
+      ListFooterComponent={() => <View style={{height: 100}}></View>}
     />
   );
 };

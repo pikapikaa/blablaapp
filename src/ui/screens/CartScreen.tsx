@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, Text, Pressable} from 'react-native';
+import {View, StyleSheet, Text, Pressable, Dimensions} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import TitleView from '../components/products/TitleView';
@@ -7,6 +7,9 @@ import {useSelector} from 'react-redux';
 import {remove, selectCartProducts} from '../../services/store/reducers/cart';
 import CartList from '../components/cart/CartList';
 import {useAppDispatch} from '../../services/hooks';
+import CustomButton from '../components/common/CustomButton';
+
+const {width} = Dimensions.get('window');
 
 const CartScreen = () => {
   const products = useSelector(selectCartProducts);
@@ -14,6 +17,7 @@ const CartScreen = () => {
 
   let content;
   let trash;
+  let button;
 
   if (products.length) {
     content = <CartList />;
@@ -22,6 +26,11 @@ const CartScreen = () => {
         <Icon name="trash-outline" size={20} color="#01282b" />
       </Pressable>
     );
+    button = (
+      <View style={styles.button}>
+        <CustomButton title="Buy" onPress={() => {}} />
+      </View>
+    );
   } else {
     content = (
       <View style={styles.center}>
@@ -29,6 +38,7 @@ const CartScreen = () => {
       </View>
     );
     trash = null;
+    button = null;
   }
   return (
     <View style={styles.container}>
@@ -37,6 +47,7 @@ const CartScreen = () => {
         {trash}
       </View>
       {content}
+      {button}
     </View>
   );
 };
@@ -61,5 +72,11 @@ const styles = StyleSheet.create({
   },
   text: {
     fontFamily: 'RobotoSlab-Regular',
+  },
+  button: {
+    marginBottom: 10,
+    position: 'absolute',
+    bottom: 0,
+    left: width / 2 - (width - 100) / 2,
   },
 });
