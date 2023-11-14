@@ -26,7 +26,6 @@ function ProductsStack() {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerRight: () => <Icon name="cart" size={25} color="#01282b" />,
         title: '',
         headerShadowVisible: false,
         headerStyle: {backgroundColor: '#f4f6f5'},
