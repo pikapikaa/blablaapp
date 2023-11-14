@@ -3,11 +3,14 @@ import {Text, View, StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import TitleView from '../components/products/TitleView';
-import {useAppSelector} from '../../services/hooks';
-import {selectCartProducts} from '../../services/store/reducers/cart';
+import {useAppDispatch, useAppSelector} from '../../services/hooks';
+import {remove, selectCartProducts} from '../../services/store/reducers/cart';
 import CustomButton from '../components/common/CustomButton';
+import {useNavigation} from '@react-navigation/native';
 
 const PaymentScreen = () => {
+  const navigation = useNavigation();
+  const dispatch = useAppDispatch();
   const products = useAppSelector(selectCartProducts);
   const total = products
     .reduce(
@@ -16,6 +19,18 @@ const PaymentScreen = () => {
       0,
     )
     .toFixed(2);
+
+  function pay() {
+    dispatch(remove());
+    navigation.reset({
+      index: 0,
+      routes: [
+        {
+          name: 'Products',
+        },
+      ],
+    });
+  }
 
   return (
     <View style={styles.container}>
@@ -28,7 +43,7 @@ const PaymentScreen = () => {
         </Text>
       </View>
       <View style={styles.footer}>
-        <CustomButton title="Pay" onPress={() => {}} />
+        <CustomButton title="Pay" onPress={pay} />
       </View>
     </View>
   );
