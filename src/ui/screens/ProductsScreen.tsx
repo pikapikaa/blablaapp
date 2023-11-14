@@ -1,6 +1,13 @@
 import React, {useEffect, useState} from 'react';
-import {Text, View, StyleSheet, ActivityIndicator} from 'react-native';
+import {
+  Text,
+  View,
+  StyleSheet,
+  ActivityIndicator,
+  Pressable,
+} from 'react-native';
 import {useSelector} from 'react-redux';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 import {useAppDispatch} from '../../services/hooks';
 import {
@@ -11,11 +18,13 @@ import {
 import KeyboardAvoidingComponent from '../components/common/KeyboardAvoidingComponent';
 import ProductList from '../components/products/ProductList';
 import TitleView from '../components/products/TitleView';
+import {useNavigation} from '@react-navigation/native';
 
 const limit = 100;
 
 const ProductsScreen = () => {
   const dispatch = useAppDispatch();
+  const navigation = useNavigation();
   const [isFirstLoading, setIsFirstLoading] = useState(false);
   const status = useSelector(selectStatus);
   const error = useSelector(selectError);
@@ -30,6 +39,19 @@ const ProductsScreen = () => {
       loadProducts();
     }
   }, [status, dispatch]);
+
+  const [count, setCount] = useState(0);
+  console.log(count);
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <Pressable onPress={() => navigation.navigate('Cart')}>
+          <Icon name="cart" size={25} color="#01282b" />
+        </Pressable>
+      ),
+    });
+  }, [navigation]);
 
   let content;
   if (isFirstLoading) {
@@ -64,7 +86,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: 20,
-    paddingTop: 15,
     paddingBottom: 0,
     gap: 10,
     backgroundColor: '#f4f6f5',

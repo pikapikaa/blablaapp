@@ -1,12 +1,13 @@
-import * as React from 'react';
+import React from 'react';
 import {Text, View, StyleSheet} from 'react-native';
+import TitleView from '../components/products/TitleView';
 
 interface CartScreenProps {}
 
 const CartScreen = (props: CartScreenProps) => {
   return (
     <View style={styles.container}>
-      <Text>CartScreen</Text>
+      <TitleView>Checkout</TitleView>
     </View>
   );
 };

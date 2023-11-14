@@ -5,6 +5,8 @@ import CartScreen from '../../ui/screens/CartScreen';
 import ProductsScreen from '../../ui/screens/ProductsScreen';
 import ProductDetailScreen from '../../ui/screens/ProductDetailScreen';
 import AuthScreen from '../../ui/screens/AuthScreen';
+import {Alert, Button} from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const Stack = createNativeStackNavigator();
 
@@ -22,32 +24,24 @@ function AuthStack() {
 
 function ProductsStack() {
   return (
-    <Stack.Navigator screenOptions={{}}>
+    <Stack.Navigator
+      screenOptions={{
+        headerRight: () => <Icon name="cart" size={25} color="#01282b" />,
+        title: '',
+        headerShadowVisible: false,
+        headerStyle: {backgroundColor: '#f4f6f5'},
+      }}>
+      <Stack.Screen name="Products" component={ProductsScreen} />
+      <Stack.Screen name="ProductDetail" component={ProductDetailScreen} />
       <Stack.Screen
-        name="Products"
-        component={ProductsScreen}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="ProductDetail"
-        component={ProductDetailScreen}
+        name="Cart"
+        component={CartScreen}
         options={{
           title: '',
           headerShadowVisible: false,
           headerStyle: {backgroundColor: '#f4f6f5'},
+          headerRight: undefined,
         }}
-      />
-    </Stack.Navigator>
-  );
-}
-
-function CartStack() {
-  return (
-    <Stack.Navigator screenOptions={{}}>
-      <Stack.Screen
-        name="Cart"
-        component={CartScreen}
-        options={{headerShown: false}}
       />
     </Stack.Navigator>
   );
@@ -65,4 +59,4 @@ function ProfileStack() {
   );
 }
 
-export {AuthStack, ProductsStack, ProfileStack, CartStack};
+export {AuthStack, ProductsStack, ProfileStack};
