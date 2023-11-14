@@ -20,7 +20,7 @@ const AuthScreen = () => {
 
   let btnContent = (
     <CustomButton
-      onPress={() => dispatch(fetchUsers(`?skip=0&limit=3`))}
+      onPress={() => dispatch(fetchUsers(`?skip=0&limit=5`))}
       title="Login"
     />
   );
