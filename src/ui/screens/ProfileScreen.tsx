@@ -3,10 +3,16 @@ import {Text, View, StyleSheet, Image} from 'react-native';
 import {logout, selectUser} from '../../services/store/reducers/auth';
 import CustomButton from '../components/common/CustomButton';
 import {useAppDispatch, useAppSelector} from '../../services/hooks';
+import {remove} from '../../services/store/reducers/cart';
 
 const ProfileScreen = () => {
   const user = useAppSelector(selectUser);
   const dispatch = useAppDispatch();
+
+  function exit() {
+    dispatch(logout());
+    dispatch(remove());
+  }
 
   return (
     <View style={styles.container}>
@@ -22,7 +28,7 @@ const ProfileScreen = () => {
       </View>
 
       <View style={styles.footer}>
-        <CustomButton title="Sign Out" onPress={() => dispatch(logout())} />
+        <CustomButton title="Sign Out" onPress={exit} />
       </View>
     </View>
   );
