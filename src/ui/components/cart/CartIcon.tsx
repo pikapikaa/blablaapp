@@ -11,15 +11,19 @@ const SIZE = 15;
 const CartIcon = (props: CartIconProps) => {
   const navigation = useNavigation();
   const products = useSelector(selectCartProducts);
+  const total = products.reduce(
+    (accumulator, currentValue) => accumulator + currentValue.count,
+    0,
+  );
 
   let notify;
-  if (products.length >= 1 && products.length <= 9) {
+  if (total >= 1 && total <= 9) {
     notify = (
       <View style={styles.circle}>
-        <Text style={styles.text}>{products.length}</Text>
+        <Text style={styles.text}>{total}</Text>
       </View>
     );
-  } else if (products.length > 9) {
+  } else if (total > 9) {
     notify = <View style={styles.circle}></View>;
   } else notify = null;
 
