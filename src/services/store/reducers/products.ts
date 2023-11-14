@@ -13,12 +13,14 @@ export interface ProductsState {
   products: Product[];
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
   error: string | undefined;
+  currentProduct: Product | null;
 }
 
 const initialState: ProductsState = {
   products: [],
   status: 'idle',
   error: undefined,
+  currentProduct: null,
 };
 
 const fetchAsyncThunk = (prefix: string) => {
@@ -29,11 +31,16 @@ const fetchAsyncThunk = (prefix: string) => {
 };
 
 export const fetchProducts = fetchAsyncThunk('products/fetchProducts');
+export const fetchProduct = fetchAsyncThunk('products/fetchProduct');
 
 export const productsSlice = createSlice({
   name: 'products',
   initialState,
-  reducers: {},
+  reducers: {
+    setProduct: (state, action: PayloadAction<Product>) => {
+      state.currentProduct = action.payload;
+    },
+  },
   extraReducers(builder) {
     builder
       .addCase(fetchProducts.pending, state => {
@@ -52,11 +59,21 @@ export const productsSlice = createSlice({
       .addCase(fetchProducts.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.error.message;
-      });
+      })
+      .addCase(
+        fetchProduct.fulfilled,
+        (state, action: PayloadAction<Product>) => {
+          state.currentProduct = action.payload;
+        },
+      );
   },
 });
 
+export const {setProduct} = productsSlice.actions;
+
 export const selectProducts = (state: RootState) => state.products.products;
+export const selectCurrentProduct = (state: RootState) =>
+  state.products.currentProduct;
 export const selectStatus = (state: RootState) => state.products.status;
 export const selectError = (state: RootState) => state.products.error;
 

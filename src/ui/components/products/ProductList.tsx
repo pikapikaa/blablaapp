@@ -5,6 +5,7 @@ import {useAppDispatch} from '../../../services/hooks';
 import {
   selectProducts,
   selectStatus,
+  setProduct,
 } from '../../../services/store/reducers/products';
 import {useSelector} from 'react-redux';
 import {fetchProducts} from '../../../services/store/reducers/products';
@@ -40,7 +41,8 @@ const ProductList = () => {
     [data],
   );
 
-  function navigateToDetail() {
+  function navigateToDetail(product: Product) {
+    dispatch(setProduct(product));
     navigation.navigate('ProductDetail');
   }
 

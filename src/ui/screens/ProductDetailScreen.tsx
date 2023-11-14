@@ -1,26 +1,50 @@
 import {useNavigation} from '@react-navigation/native';
-import React, {useEffect} from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import React, {useCallback, useEffect, useState} from 'react';
+import {View, ScrollView, RefreshControl} from 'react-native';
 import CartIcon from '../components/cart/CartIcon';
+import {useAppDispatch, useAppSelector} from '../../services/hooks';
+import ProductInfo from '../components/products/ProductInfo';
+import {
+  fetchProduct,
+  selectCurrentProduct,
+} from '../../services/store/reducers/products';
+import ProductInfoButton from '../components/products/ProductInfoButton';
 
-interface ProductDetailScreenProps {}
+const ProductDetailScreen = () => {
+  const [refreshing, setRefreshing] = useState(false);
 
-const ProductDetailScreen = (props: ProductDetailScreenProps) => {
+  const dispatch = useAppDispatch();
+  const product = useAppSelector(selectCurrentProduct);
   const navigation = useNavigation();
+
   useEffect(() => {
     navigation.setOptions({
       headerRight: () => <CartIcon />,
     });
   }, [navigation]);
+
+  const onRefresh = useCallback(async () => {
+    setRefreshing(true);
+    await dispatch(fetchProduct(`/${product?.id}`));
+    setRefreshing(false);
+  }, []);
+
   return (
-    <View style={styles.container}>
-      <Text>ProductDetailScreen</Text>
+    <View style={{flex: 1}}>
+      <ScrollView
+        style={{flex: 1}}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }>
+        <ProductInfo
+          image={<ProductInfo.Image />}
+          title={<ProductInfo.Title />}
+          details={<ProductInfo.Details />}
+        />
+      </ScrollView>
+      <ProductInfoButton />
     </View>
   );
 };
 
 export default ProductDetailScreen;
-
-const styles = StyleSheet.create({
-  container: {flex: 1, backgroundColor: '#f4f6f5'},
-});
