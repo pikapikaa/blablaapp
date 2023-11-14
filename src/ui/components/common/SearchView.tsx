@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: 15,
-    paddingVertical: Platform.OS === 'ios' ? 13 : 3,
+    paddingVertical: Platform.OS === 'ios' ? 13 : 0,
     borderRadius: 7,
     backgroundColor: 'white',
   },

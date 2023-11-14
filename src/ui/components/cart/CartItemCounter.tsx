@@ -15,12 +15,12 @@ const CartItemCounter = () => {
   return (
     <View style={styles.container}>
       <Pressable onPress={() => dispatch(increaseCounter(product))}>
-        <Icon name="add" size={18} color="gray" />
+        <Icon name="add" size={25} color="gray" />
       </Pressable>
 
       <Text style={styles.text}>{product.count}</Text>
       <Pressable onPress={() => dispatch(decreaseCounter(product))}>
-        <Icon name="remove-outline" size={18} color="gray" />
+        <Icon name="remove-outline" size={25} color="gray" />
       </Pressable>
     </View>
   );
