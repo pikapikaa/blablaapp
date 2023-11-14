@@ -21,7 +21,8 @@ export const cartSlice = createSlice({
       if (index > -1) {
         state.products[index].count++;
       } else {
-        state.products.push(action.payload);
+        const payloadWithCount = {...action.payload, count: 1};
+        state.products.push(payloadWithCount);
       }
     },
     decreaseCounter: (state, action: PayloadAction<Product>) => {
@@ -38,10 +39,13 @@ export const cartSlice = createSlice({
         }
       }
     },
+    remove: state => {
+      state.products = [];
+    },
   },
 });
 
-export const {increaseCounter} = cartSlice.actions;
+export const {increaseCounter, decreaseCounter, remove} = cartSlice.actions;
 
 export const selectCartProducts = (state: RootState) => state.cart.products;
 
