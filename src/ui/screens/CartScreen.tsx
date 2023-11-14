@@ -13,22 +13,28 @@ const CartScreen = () => {
   const dispatch = useAppDispatch();
 
   let content;
+  let trash;
+
   if (products.length) {
     content = <CartList />;
+    trash = (
+      <Pressable onPress={() => dispatch(remove())}>
+        <Icon name="trash-outline" size={20} color="#01282b" />
+      </Pressable>
+    );
   } else {
     content = (
       <View style={styles.center}>
         <Text style={styles.text}>no products</Text>
       </View>
     );
+    trash = null;
   }
   return (
     <View style={styles.container}>
       <View style={styles.row}>
         <TitleView>Checkout</TitleView>
-        <Pressable onPress={() => dispatch(remove())}>
-          <Icon name="trash-outline" size={20} color="#01282b" />
-        </Pressable>
+        {trash}
       </View>
       {content}
     </View>
