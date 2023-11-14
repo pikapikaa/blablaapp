@@ -1,10 +1,8 @@
 import React from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import TitleView from '../components/products/TitleView';
 
-interface CartScreenProps {}
-
-const CartScreen = (props: CartScreenProps) => {
+const CartScreen = () => {
   return (
     <View style={styles.container}>
       <TitleView>Checkout</TitleView>
@@ -15,5 +13,8 @@ const CartScreen = (props: CartScreenProps) => {
 export default CartScreen;
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    flex: 1,
+    paddingHorizontal: 20,
+  },
 });
